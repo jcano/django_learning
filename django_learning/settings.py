@@ -19,8 +19,12 @@ MANAGERS = ADMINS
 #        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
 #    }
 #}
+import os
+PROJECT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir)
 
-DATABASES = { 'default': { 'ENGINE': 'django.db.backends.sqlite3', 'NAME':'learning.db' } }
+SQLITE_3 = os.path.join(PROJECT_PATH, 'learning.db')
+
+DATABASES = { 'default': { 'ENGINE': 'django.db.backends.sqlite3', 'NAME':SQLITE_3 } }
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -105,6 +109,7 @@ ROOT_URLCONF = 'django_learning.urls'
 WSGI_APPLICATION = 'django_learning.wsgi.application'
 
 TEMPLATE_DIRS = (
+                 os.path.join(PROJECT_PATH, 'templates')
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -118,9 +123,10 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'polls',
 )
 
 # A sample logging configuration. The only tangible logging
