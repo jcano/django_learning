@@ -2,6 +2,7 @@ from polls.models import Poll
 from django.http import HttpResponse, Http404
 from django.template import Context, loader
 from django.shortcuts import render_to_response, get_object_or_404
+
 def index(request):
     latest_poll_list = Poll.objects.all().order_by('-pub_date')[:5]
     
